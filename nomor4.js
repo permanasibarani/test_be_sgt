@@ -22,4 +22,4 @@ const graduation = (gpa, totalCredits, honorsCredits) => {
 	}
 };
 
-console.log(graduation(3.85, 190, 15));
+console.log(graduation(1.5, 199, 30));

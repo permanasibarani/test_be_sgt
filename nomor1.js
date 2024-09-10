@@ -33,19 +33,19 @@ const books = [
 
 const getLastTenYearBook = (arr) => {
 	const currentYear = new Date().getFullYear();
-	const arrResult = [];
+	const arrarrResult = [];
 
 	for (let i = 0; i < arr.length; i++) {
 		if (arr[i].year >= currentYear - 10) {
-			arrResult.push(arr[i]);
+			arrarrResult.push(arr[i]);
 		}
 	}
-	return arrResult;
+	return arrarrResult;
 };
 
 const search = (query) => {
 	const lowerCaseQuery = query.toLowerCase();
-	const result = [];
+	const arrResult = [];
 
 	for (let i = 0; i < books.length; i++) {
 		const book = books[i];
@@ -56,11 +56,11 @@ const search = (query) => {
 			book.year.toString().includes(lowerCaseQuery) ||
 			book.genre.toLowerCase().includes(lowerCaseQuery)
 		) {
-			result.push(book);
+			arrResult.push(book);
 		}
 	}
 
-	return result;
+	return arrResult;
 };
 
 console.log(getLastTenYearBook(books)); //* Tidak ada buku yang keluar dalam 10 tahun terakhir

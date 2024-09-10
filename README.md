@@ -1,3 +1,22 @@
-# test_be_sgt
-Clone repo ini dan dapat dijalankan tanpa harus menginstal independensi.
-Dapat dijalankan di Node.js v20.16.0.
+# Petunjuk Menjalankan Program
+
+1. **Clone Repository**
+
+   Clone repositori ini ke mesin lokal Anda dengan menggunakan perintah berikut:
+
+   ```bash
+   git clone https://github.com/permanasibarani/test_be_sgt.git
+   ```
+2. **Masuk ke Direktori Proyek**
+   ```bash
+   cd test_be_sgt
+   ```
+3. **Jalankan Program**
+```
+node nomor<1-5>.js
+```
+atau dapat di
+
+**Catatan**: Pastikan Anda menggunakan Node.js versi 20.16.0.
+
+

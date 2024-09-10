@@ -62,26 +62,54 @@ const books = [
 		genre: "Mystery",
 		rating: 4.4,
 	},
+	{
+		title: "The Da Vinci Code2",
+		author: "Dan Brown",
+		year: 2003,
+		genre: "Mystery",
+		rating: 4.2,
+	},
 ];
 
-const getTopThreeBooksByGenre = (books) => {
-	const genreGroups = {};
-	for (const book of books) {
-		if (!genreGroups[book.genre]) {
-			genreGroups[book.genre] = [];
+const categorizeBookByItsGenre = (arr) => {
+	const genreMap = {};
+
+	for (let i = 0; i < arr.length; i++) {
+		const genre = arr[i].genre;
+		if (!genreMap[genre]) {
+			genreMap[genre] = { genre: genre, movieList: [] };
 		}
-		genreGroups[book.genre].push(book);
+
+		genreMap[genre].movieList.push(arr[i]);
 	}
 
-	const result = [];
-	for (const genre in genreGroups) {
-		const booksInGenre = genreGroups[genre];
-		booksInGenre.sort((a, b) => b.rating - a.rating);
-		const topBooks = booksInGenre.slice(0, 3);
-		result.push(...topBooks);
-	}
-
-	return result;
+	return Object.values(genreMap);
 };
 
-console.log(getTopThreeBooksByGenre(books));
+const sortBookByItsRating = (groupedBooks) => {
+	for (let i = 0; i < groupedBooks.length; i++) {
+		const movieList = groupedBooks[i].movieList;
+		for (let j = 1; j < movieList.length; j++) {
+			const currentRating = movieList[j].rating;
+			const currentMovie = movieList[j];
+			let k = j - 1;
+			for (k; k >= 0 && movieList[k].rating < currentRating; k--) {
+				movieList[k + 1] = movieList[k];
+			}
+			movieList[k + 1] = currentMovie;
+		}
+	}
+	return groupedBooks;
+};
+
+const filterTopThreeBooks = (groupedBooks) => {
+	for (let i = 0; i < groupedBooks.length; i++) {
+		const { movieList } = groupedBooks[i];
+		groupedBooks[i].movieList = movieList.slice(0, 3);
+	}
+	return groupedBooks;
+};
+
+const result = filterTopThreeBooks(
+	sortBookByItsRating(categorizeBookByItsGenre(books)),
+);

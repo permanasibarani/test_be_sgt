@@ -15,7 +15,6 @@
 ```
 node nomor<1-5>.js
 ```
-atau dapat di
 
 **Catatan**: Pastikan Anda menggunakan Node.js versi 20.16.0.
 
